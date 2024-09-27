@@ -45,5 +45,19 @@ router.post("/", async (req,res) => {
     }
 })
 
+router.put("/:id",async(req,res) => {
+    const {id,status} = req.body;
+
+    const newTask = await Prisma.task.update({
+        where:{
+            id:id
+        },
+        data:{
+            status:status
+        }
+    })
+
+    SuccessResponse(res,200,"Task Updated Successfully");
+})
 
 export default router;

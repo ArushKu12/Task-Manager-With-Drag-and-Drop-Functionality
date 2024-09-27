@@ -9,6 +9,6 @@ export const SuccessResponse = (res,status,message,data=null) => {
     return res.status(status).json({
         success:true,
         message:message,
-        data:data
+        data
     })
 }
