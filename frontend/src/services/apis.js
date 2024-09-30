@@ -4,5 +4,6 @@ const base_url = `${backend_host}${api_version}`;
 
 // Tasks APIs
 export const taskAPI = `${base_url}/tasks`;
-
+export const deleteAPI = `${base_url}/delete`
+ 
 

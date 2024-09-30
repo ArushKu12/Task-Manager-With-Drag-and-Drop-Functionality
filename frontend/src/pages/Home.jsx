@@ -56,9 +56,13 @@ const Home = () => {
 
   return (
     <div className='w-screen h-screen '>
-        <div className='app'>
-            {APP_NAME}
+        <div className='flex justify-between w-full px-[2.5rem] shadow-md pb-[0.7rem] bg-blue-200 pt-[0.6rem]'>
+            <div className='app text-gray-500 text-3xl font-semibold hover:text-gray-700 cursor-pointer pt-[0.2rem]'>
+                {APP_NAME}
+            </div>
+            <button className='px-[2rem] bg-red-500 text-white font-semibold rounded-lg hover:bg-red-400 py-[0.6rem] '>+ Add New Tasks</button>
         </div>
+       
         <div className='container'>
             <div className='container-1' >
                 <TaskListing fetchTasks={fetchTasks} setTasks={setTasks} tasks={filteredTasksToDo} status='to-do' />

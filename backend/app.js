@@ -13,7 +13,7 @@ app.use(cors({
     credentials: true,
 }));
 
-app.use('/api/v1/tasks/',taskRouter);
+app.use('/api/v1/',taskRouter);
 
 
 const PORT = process.env.PORT || 4000;

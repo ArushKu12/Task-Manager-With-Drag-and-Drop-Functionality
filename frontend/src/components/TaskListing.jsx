@@ -36,12 +36,13 @@ const TaskListing = ({tasks,status,setTasks,fetchTasks}) => {
  
   return (
     <div ref={drop} className={`flex flex-col ${isOver ? 'bg-gray-200' : ''}`}>
-      <div className='text-2xl'>
-        {status} 
+      <div className='text-2xl py-[1rem] flex justify-center '>
+        <button className='px-[5rem] py-[0.5rem] bg-blue-400 shadow-lg text-white font-semibold rounded-3xl hover:bg-blue-500'>{status} </button>
+        
       </div>
-      <div className='pt-[2rem] text-xl flex flex-col'>
+      <div className='pt-[0.1rem] text-xl flex flex-col'>
       {tasks.length > 0 ? (
-          tasks.map((task) => <Task task={task} key={task.id} />)
+          tasks.map((task) => <Task task={task} key={task.id} fetchTasks={fetchTasks}/>)
         ) : (
           <p>No tasks for {status}</p>
         )}

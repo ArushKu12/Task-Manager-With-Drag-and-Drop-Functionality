@@ -12,7 +12,7 @@ const taskSchema = z.object({
 })
 
 
-router.get("/", async (req,res) => {
+router.get("/tasks", async (req,res) => {
     try {
         const tasks = await Prisma.task.findMany();
 
@@ -22,7 +22,7 @@ router.get("/", async (req,res) => {
     }
 })
 
-router.post("/", async (req,res) => {
+router.post("/tasks", async (req,res) => {
     const {task} = req.body;
 
         if(!taskSchema.safeParse(task)){
@@ -45,7 +45,7 @@ router.post("/", async (req,res) => {
     }
 })
 
-router.put("/:id",async(req,res) => {
+router.put("/tasks/:id",async(req,res) => {
     const {id,status} = req.body;
 
     const newTask = await Prisma.task.update({
@@ -58,6 +58,17 @@ router.put("/:id",async(req,res) => {
     })
 
     SuccessResponse(res,200,"Task Updated Successfully");
+})
+
+router.post("/delete",async(req,res) => {
+    const{id} = req.body;
+
+    const updatedTasks = await Prisma.task.delete({
+        where:{
+            id:id
+        }
+    })
+    SuccessResponse(res,200,"Task deleted Successfully")
 })
 
 export default router;
