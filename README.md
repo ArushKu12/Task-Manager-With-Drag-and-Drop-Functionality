@@ -26,7 +26,7 @@ The **Task Manager Web Application** is a productivity tool designed to help use
 - **Frontend**: React, Tailwind CSS
 - **State Management**: Recoil
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB
+- **ORM**: Prisma
 - **API**: Axios for making HTTP requests
 - **Drag and Drop**: React DnD (or any library you've used)
 
