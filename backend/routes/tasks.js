@@ -6,10 +6,7 @@ import { ErrorResponse,SuccessResponse } from '../utils/responses.js';
 const Prisma = new PrismaClient();
 const router = express.Router();
 
-const taskSchema = z.object({
-    title: z.string(),
-    status:z.string()
-})
+const taskSchema = z.string()
 
 
 router.get("/tasks", async (req,res) => {
@@ -33,8 +30,8 @@ router.post("/tasks", async (req,res) => {
 
         const newtask = await Prisma.task.create({
             data:{
-                title:task.title,
-                status:task.status
+                title:task,
+                status:'to-do'
             }
         });
 

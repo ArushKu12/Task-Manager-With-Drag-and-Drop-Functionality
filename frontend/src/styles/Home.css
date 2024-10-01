@@ -2,3 +2,46 @@
     display: grid;
     grid-template-columns: 33% 33% 33%;
 }
+
+/* Modal Overlay - dims the background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    max-height: 150px;
+    height: 100%;
+    position: relative;
+    z-index: 1010;
+  }
+  
+  /* Close button for modal */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+    
+    
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+ 
+  

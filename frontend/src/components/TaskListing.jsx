@@ -44,7 +44,10 @@ const TaskListing = ({tasks,status,setTasks,fetchTasks}) => {
       {tasks.length > 0 ? (
           tasks.map((task) => <Task task={task} key={task.id} fetchTasks={fetchTasks}/>)
         ) : (
-          <p>No tasks for {status}</p>
+          <div className='flex justify-center items-center h-[20rem] w-full '>
+            <div className='bg-gray-200 w-[60%] h-[30%] rounded-lg shadow-lg text-gray-600 font-semibold flex justify-center items-center'>No Tasks for {status}</div>
+            
+          </div>
         )}
       </div>
     </div>

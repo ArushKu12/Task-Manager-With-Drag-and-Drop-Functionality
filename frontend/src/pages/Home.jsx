@@ -7,11 +7,15 @@ import Loader from '../components/Loader';
 import "../styles/Home.css"
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { taskAtom } from '../store/taskAtom';
+import { FormAtom } from '../store/FormAtom';
+import TaskForm from '../components/TaskForm';
 
 
 const Home = () => {
     const [loading,setLoading] = useState(null);
     const [tasks,setTasks] = useRecoilState(taskAtom);
+    const [formState,SetformState] = useRecoilState(FormAtom)
+
     
     
 
@@ -55,15 +59,17 @@ const Home = () => {
     }
 
   return (
+    
+
     <div className='w-screen h-screen '>
         <div className='flex justify-between w-full px-[2.5rem] shadow-md pb-[0.7rem] bg-blue-200 pt-[0.6rem]'>
             <div className='app text-gray-500 text-3xl font-semibold hover:text-gray-700 cursor-pointer pt-[0.2rem]'>
                 {APP_NAME}
             </div>
-            <button className='px-[2rem] bg-red-500 text-white font-semibold rounded-lg hover:bg-red-400 py-[0.6rem] '>+ Add New Tasks</button>
+            <button onClick={() => {SetformState(true)}} className='px-[2rem] bg-red-500 text-white font-semibold rounded-lg hover:bg-red-400 py-[0.6rem] '>+ Add New Tasks</button>
         </div>
        
-        <div className='container'>
+        <div className={`container ${formState ? 'blur' : ''}`}>
             <div className='container-1' >
                 <TaskListing fetchTasks={fetchTasks} setTasks={setTasks} tasks={filteredTasksToDo} status='to-do' />
             </div>
@@ -75,6 +81,17 @@ const Home = () => {
             </div>
         </div>
         
+        {formState && (
+          <div className='modal-overlay'>
+            <div className='modal-content'>
+              <div className="form-header">
+                
+                <button onClick={() => {SetformState(false)}} className="close-button shadow-md rounded-md bg-red-300 px-[1rem] py-[0.2rem] text-red-500 hover:bg-red-200 hover:text-red-700">X</button>
+              </div>
+              <TaskForm fetchTasks={fetchTasks}/>
+            </div>
+          </div>
+        )}
     </div>
   )
 }
